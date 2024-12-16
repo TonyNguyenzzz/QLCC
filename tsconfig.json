@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es6", // Thay đổi từ "es5" thành "es6"
+    "lib": ["dom", "es2015"],
+    "jsx": "react",
+    "module": "esnext", // Thêm dòng này để hỗ trợ các module mới
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./build",
+    "baseUrl": "src"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
