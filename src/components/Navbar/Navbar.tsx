@@ -78,7 +78,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     { text: 'Trang chủ', icon: <Home />, path: '/resident/dashboard' },
     { text: 'Thanh toán', icon: <Payment />, path: '/resident/payments' },
     { text: 'Yêu cầu sửa chữa', icon: <Build />, path: '/maintenance-requests' },
-    { text: 'Thông tin cá nhân', icon: <Person />, path: '/resident/profile' },
+    { text: 'Thông tin cá nhân', icon: <Person />, path: '/profile' },
   ];
 
   // Menu riêng cho Manager
@@ -90,7 +90,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     { text: 'Yêu cầu sửa chữa', icon: <Build />, path: '/manager/maintenance-requests' },
     { text: 'Báo cáo thanh toán', icon: <Assessment />, path: '/payment-reports' },
     { text: 'Báo cáo khác', icon: <Assessment />, path: '/reports' },
-    { text: 'Thông tin cá nhân', icon: <Person />, path: user?.role === UserRole.Resident ? '/resident/profile' : '/profile' },
+    { text: 'Thông tin cá nhân', icon: <Person />, path: '/profile' },
   ];
 
   // Chọn menu dựa trên role
@@ -184,7 +184,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           open={Boolean(anchorElUser)}
           onClose={handleUserClose}
         >
-          <MenuItem onClick={() => navigate(user?.role === UserRole.Resident ? '/resident/profile' : '/profile')}>Thông tin cá nhân</MenuItem>
+          <MenuItem onClick={() => navigate('/profile')}>Thông tin cá nhân</MenuItem>
           <MenuItem onClick={handleLogout}>Đăng xuất</MenuItem>
         </Menu>
       </Toolbar>

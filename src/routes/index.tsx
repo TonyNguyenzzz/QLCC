@@ -16,7 +16,7 @@ const Unauthorized = React.lazy(() => import('../pages/Unauthorized'));
 const ResidentDashboard = React.lazy(() => import('../pages/ResidentPortal/Dashboard/ResidentDashboard'));
 const ResidentPayments = React.lazy(() => import('../pages/Payments/ResidentPayments'));
 const MaintenanceRequests = React.lazy(() => import('../pages/MaintenanceRequests/MaintenanceRequests'));
-const ResidentProfile = React.lazy(() => import('../pages/Profile/Profile'));
+const ResidentProfile = React.lazy(() => import('../pages/ResidentPortal/Profile/ResidentProfile'));
 
 // Manager Routes
 const ManagerDashboard = React.lazy(() => import('../pages/Management/Dashboard/ManagerDashboard'));
@@ -76,6 +76,16 @@ const AppRoutes: React.FC = () => {
   return (
     <Suspense fallback={<CircularProgress />}>
       <Routes>
+        {/* Profile Route - Chung cho cả Resident và Manager */}
+        <Route 
+          path="/profile" 
+          element={
+            <LayoutWithNavbar>
+              {user.role === UserRole.Resident ? <ResidentProfile /> : <ManagerProfile />}
+            </LayoutWithNavbar>
+          } 
+        />
+
         {/* Resident Routes */}
         {user.role === UserRole.Resident && (
           <>
@@ -100,14 +110,6 @@ const AppRoutes: React.FC = () => {
               element={
                 <LayoutWithNavbar>
                   <MaintenanceRequests />
-                </LayoutWithNavbar>
-              } 
-            />
-            <Route 
-              path="/profile" 
-              element={
-                <LayoutWithNavbar>
-                  <ResidentProfile />
                 </LayoutWithNavbar>
               } 
             />
@@ -180,14 +182,6 @@ const AppRoutes: React.FC = () => {
               element={
                 <LayoutWithNavbar>
                   <ManagerMaintenanceRequests />
-                </LayoutWithNavbar>
-              } 
-            />
-            <Route 
-              path="/profile" 
-              element={
-                <LayoutWithNavbar>
-                  <ManagerProfile />
                 </LayoutWithNavbar>
               } 
             />
